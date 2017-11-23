@@ -1,5 +1,4 @@
 # ![yay](docs/src/logo.png) What is Yay?
-To find out what Yay is please procee to the [official](https://github.com/sveneisenschmidt/yay) project.
 
 ## The Idea
 > Gamification can be applied to all technical and non-technical tasks during our daily working life. Everything can be gamified.
@@ -7,6 +6,8 @@ To find out what Yay is please procee to the [official](https://github.com/svene
 <p align="center">
     <img title="Yay!" src="docs/src/cycle.svg" width="375">
 </p>
+
+Want to find out what Yay is? Jump right to the official repository [sveneisenschmidt/yay](https://github.com/sveneisenschmidt/yay). Yay!
 
 ## Yay recipes for sloppy.io
 
