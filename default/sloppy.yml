@@ -1,0 +1,57 @@
+version: v1
+project: yay
+services:
+  demo:
+    redis:
+      image: redis:latest
+      instances: 1
+      mem: 128
+      volumes:
+        - container_path: /data
+          size: 8GB
+    mysql:
+      image: mysql:5.7
+      instances: 1
+      mem: 512
+      env:
+        - MYSQL_ROOT_PASSWORD: root
+        - MYSQL_DATABASE: demo
+      volumes:
+        - container_path: /var/lib/mysql
+          size: 8GB
+    web:
+      image: sveneisenschmidt/yay:stable
+      instances: 1
+      mem: 256
+      domain: $URI
+      port: 80
+      dependencies:
+        - ../demo/mysql
+        - ../demo/redis
+        - ../demo/install
+      env:
+        - APP_MODE: web
+        - APP_ENV: prod
+        - DATABASE_HOST: mysql.demo.yay
+        - DATABASE_NAME: demo
+        - DATABASE_USER: root
+        - DATABASE_PASSWORD: root
+        - REDIS_HOST: redis.demo.yay
+        - REDIS_PORT: "6379"
+    install:
+      image: sveneisenschmidt/yay:stable
+      instances: 1
+      mem: 256
+      dependencies:
+        - ../demo/mysql
+        - ../demo/redis
+      env:
+        - APP_MODE: install
+        - APP_ENV: prod
+        - DATABASE_HOST: mysql.demo.yay
+        - DATABASE_NAME: demo
+        - DATABASE_USER: root
+        - DATABASE_PASSWORD: root
+        - REDIS_HOST: redis.demo.yay
+        - REDIS_PORT: "6379"
+    
