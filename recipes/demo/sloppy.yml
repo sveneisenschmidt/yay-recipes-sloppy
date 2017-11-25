@@ -22,7 +22,7 @@ services:
     web:
       image: sveneisenschmidt/yay-demo:stable
       instances: 1
-      mem: 256
+      mem: 128
       domain: yay-demo.sloppy.zone
       port: 80
       dependencies:
@@ -41,7 +41,7 @@ services:
     install:
       image: sveneisenschmidt/yay-demo:stable
       instances: 1
-      mem: 256
+      mem: 128
       dependencies:
         - ../demo/mysql
         - ../demo/redis
